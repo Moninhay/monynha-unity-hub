@@ -14,6 +14,284 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_messages: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          is_read: boolean | null
+          lang_code: string | null
+          message: string
+          name: string
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          is_read?: boolean | null
+          lang_code?: string | null
+          message: string
+          name: string
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          is_read?: boolean | null
+          lang_code?: string | null
+          message?: string
+          name?: string
+          subject?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contact_messages_lang_code_fkey"
+            columns: ["lang_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      languages: {
+        Row: {
+          code: string
+          created_at: string | null
+          is_active: boolean | null
+          name: string
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          is_active?: boolean | null
+          name: string
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          is_active?: boolean | null
+          name?: string
+        }
+        Relationships: []
+      }
+      pages: {
+        Row: {
+          created_at: string | null
+          default_lang: string | null
+          id: string
+          is_published: boolean | null
+          slug: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          default_lang?: string | null
+          id?: string
+          is_published?: boolean | null
+          slug: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          default_lang?: string | null
+          id?: string
+          is_published?: boolean | null
+          slug?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pages_default_lang_fkey"
+            columns: ["default_lang"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      post_translations: {
+        Row: {
+          body: string | null
+          created_at: string | null
+          excerpt: string | null
+          id: string
+          lang_code: string | null
+          post_id: string | null
+          status: string | null
+          title: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          lang_code?: string | null
+          post_id?: string | null
+          status?: string | null
+          title: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          lang_code?: string | null
+          post_id?: string | null
+          status?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_translations_lang_code_fkey"
+            columns: ["lang_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "post_translations_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      posts: {
+        Row: {
+          cover_image: string | null
+          created_at: string | null
+          default_lang: string | null
+          id: string
+          is_published: boolean | null
+          published_at: string | null
+          slug: string
+          updated_at: string | null
+        }
+        Insert: {
+          cover_image?: string | null
+          created_at?: string | null
+          default_lang?: string | null
+          id?: string
+          is_published?: boolean | null
+          published_at?: string | null
+          slug: string
+          updated_at?: string | null
+        }
+        Update: {
+          cover_image?: string | null
+          created_at?: string | null
+          default_lang?: string | null
+          id?: string
+          is_published?: boolean | null
+          published_at?: string | null
+          slug?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_default_lang_fkey"
+            columns: ["default_lang"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      product_translations: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          faq: Json | null
+          features: Json | null
+          id: string
+          lang_code: string | null
+          name: string
+          product_id: string | null
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          faq?: Json | null
+          features?: Json | null
+          id?: string
+          lang_code?: string | null
+          name: string
+          product_id?: string | null
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          faq?: Json | null
+          features?: Json | null
+          id?: string
+          lang_code?: string | null
+          name?: string
+          product_id?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_translations_lang_code_fkey"
+            columns: ["lang_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "product_translations_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          created_at: string | null
+          default_lang: string | null
+          demo_url: string | null
+          hero_image: string | null
+          id: string
+          is_published: boolean | null
+          key: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          default_lang?: string | null
+          demo_url?: string | null
+          hero_image?: string | null
+          id?: string
+          is_published?: boolean | null
+          key: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          default_lang?: string | null
+          demo_url?: string | null
+          hero_image?: string | null
+          id?: string
+          is_published?: boolean | null
+          key?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_default_lang_fkey"
+            columns: ["default_lang"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -43,6 +321,86 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      sections: {
+        Row: {
+          component_type: string
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          ordering: number | null
+          page_id: string | null
+        }
+        Insert: {
+          component_type: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          ordering?: number | null
+          page_id?: string | null
+        }
+        Update: {
+          component_type?: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          ordering?: number | null
+          page_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sections_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      translations: {
+        Row: {
+          content: Json
+          created_at: string | null
+          id: string
+          lang_code: string | null
+          section_id: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          content: Json
+          created_at?: string | null
+          id?: string
+          lang_code?: string | null
+          section_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          content?: Json
+          created_at?: string | null
+          id?: string
+          lang_code?: string | null
+          section_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "translations_lang_code_fkey"
+            columns: ["lang_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "translations_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "sections"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
