@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
+import { ArmsPage } from "./pages/ArmsPage";
 import { ContactPage } from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import './lib/i18n';
@@ -25,7 +26,7 @@ const App = () => (
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* TODO: Add other routes */}
-            <Route path="/arms" element={<div className="container mx-auto px-4 py-12"><h1 className="text-4xl font-bold">Arms - Coming Soon</h1></div>} />
+            <Route path="/arms" element={<ArmsPage />} />
             <Route path="/solutions" element={<div className="container mx-auto px-4 py-12"><h1 className="text-4xl font-bold">Solutions - Coming Soon</h1></div>} />
             <Route path="/blog" element={<div className="container mx-auto px-4 py-12"><h1 className="text-4xl font-bold">Blog - Coming Soon</h1></div>} />
             <Route path="*" element={<NotFound />} />

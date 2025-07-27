@@ -1,10 +1,9 @@
-
 import { usePageContent } from '@/hooks/useContent';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { SectionRenderer } from '@/components/sections/SectionRenderer';
 
-export const HomePage = () => {
-  const { data, isLoading, error } = usePageContent('home');
+export const ArmsPage = () => {
+  const { data, isLoading, error } = usePageContent('arms');
 
   if (isLoading) {
     return (
@@ -15,8 +14,7 @@ export const HomePage = () => {
   }
 
   if (error) {
-    console.error('Error loading home page:', error);
-    // Fallback to empty sections
+    console.error('Error loading arms page:', error);
     return <div className="min-h-screen">Error loading content</div>;
   }
 
